@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:image" content="{{ project[4] }}">
+	<meta property="og:title" content="{{ project[1] }}">
+	<meta property="og:description" content="{{ project[7] }}">
+	<title>{{ project[1] }}</title>
+	<link rel="stylesheet" href="/static/style.css" />
+	<script src="/static/script.js" defer></script>
+	<script src="/static/navbar.js" defer></script>
+</head>
+<body>
+	<div id="navbar"></div>
+
+	<div id="project-display">
+		<img id="hero" src="{{ project[4] }}" alt="" draggable="false">
+		<h1 id="name">{{ project[1] }}</h1>
+		<div id="participate-information">
+			<button id="participant-number">{{ participant_count }}</button>
+			<button id="join-project" joined="{{ participant_joined }}"></button>
+		</div>
+		<address>
+			<p><b>Date:</b> <span class="convert-date">{{ project[6] }}</span></p>
+			<p><b>Location:</b> {{ project[5] }}</p>
+			<p><b>Project Manager:</b> {{ project[2] }}</p>
+			<p><b>Contact Info:</b> <a href="mailto:{{ project[3] }}?subject=Pine - {{ project[1] }}">{{ project[3] }}</a></p>
+		</address>
+		<br>
+		<pre>{{ project[7] }}</pre>
+	</div>
+
+	<script> 
+		const profilePicture = "{{ session['picture'] }}"
+	</script>
+</body>
+</html>

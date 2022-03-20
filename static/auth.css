@@ -1,0 +1,41 @@
+#auth {
+	box-shadow: var(--box-shadow);
+	border-radius: 9px;
+	width: 75%;
+	margin: auto;
+	display: flex;
+	height: 450px;
+	margin-top: 100px;
+}
+
+#auth form {
+	flex: 1;
+	padding: 75px 15px 15px 15px;
+}
+
+#auth form h2 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+#auth form input {
+	display: block;
+	margin: auto;
+	margin-bottom: 25px;
+}
+
+#auth div {
+	flex: 1;
+	text-align: center;
+	/* background: linear-gradient(45deg, royalblue, tomato); */
+	padding: 75px 15px 15px 15px;
+	border-radius: 0px 9px 9px 0px;
+}
+
+#auth div h2 {
+	margin-bottom: 30px;
+}
+
+#auth div img {
+	width: 185px;
+}

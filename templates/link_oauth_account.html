@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+	<link rel="stylesheet" href="/static/style.css" />
+	<script src="/static/script.js" defer></script>
+	<script src="/static/navbar.js" defer></script>
+	<!-- <script src="/static/register.js" defer></script> -->
+</head>
+<body>
+	<div id="navbar"></div>
+	
+	<h1>Link {{ oauth_service }} To Existing Account</h1>
+	<p class="header-description">We found an existing account with the same email as your {{ oauth_service }} account. Would you like to link this account to your {{ oauth_service }} login?</p>
+
+	<div class="account-card">
+		<p>{{ username }}</p>
+		<p>{{ email }}</p>
+	</div>
+	<img id="merge-icon" src="/static/images/icons/merge.png" height="50">
+	<div class="account-card">
+		<p>{{ email }}</p>
+		<img src="/static/images/oauth/google/square.svg">
+	</div>
+
+	<div id="oauth-options">
+	<a id="oauth-swap-btn" href="/swap-account?oauth={{ oauth_service|lower }}" title="All data will be lost">Replace Old Account</a>
+	<a id="oauth-link-btn" href="/link-account?oauth={{ oauth_service|lower }}">Link Accounts</a>
+	</div>
+	
+</body>
+</html>

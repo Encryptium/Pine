@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+	<link rel="stylesheet" href="/static/style.css" />
+	<script src="/static/script.js" defer></script>
+	<script src="/static/navbar.js" defer></script>
+	<!-- <script src="/static/register.js" defer></script> -->
+</head>
+<body>
+	<div id="navbar"></div>
+	
+	<h1>Pick a Username</h1>
+
+	<form action="/update-username" method="POST">
+		<input id="username" type="text" name="username" placeholder="Username" required>
+		<input type="submit" value="Register">
+	</form>
+
+	<script>
+		const registerUsernameInput = document.getElementById("username");
+		
+		registerUsernameInput.addEventListener('keyup', e => {
+			fetch(`/api/v1/register/check-username?string=${registerUsernameInput.value}`)
+			.then(response => {
+				if (response.status !== 200) {
+					console.log("Couldn't establish connection to server.");
+					return;
+				}
+		
+				response.json()
+					.then(data => {
+						if (data.status == "success") {
+							registerUsernameInput.classList.remove("invalid");
+							registerUsernameInput.classList.add("valid");
+							registerUsernameInput.title = data.message;
+						} else {
+							registerUsernameInput.classList.remove("valid");
+							registerUsernameInput.classList.add("invalid");
+							registerUsernameInput.title = data.message;
+						}
+					});
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:image" content="{{ project[4] }}">
+	<meta property="og:title" content="{{ project[1] }}">
+	<meta property="og:description" content="{{ project[7] }}">
+	<title>{{ project[1] }} | Edit</title>
+	<link rel="stylesheet" href="/static/style.css" />
+	<script src="/static/script.js" defer></script>
+	<script src="/static/navbar.js" defer></script>
+</head>
+<body>
+	<div id="navbar"></div>
+
+	<form id="project-display" action="/edit/{{ project[0] }}" method="POST">
+		<div id="sub-navbar">
+			<ul>
+				<a href="/edit/{{ project[0] }}">
+					<li selected>Editor</li>
+				</a>
+				<a href="/participants/{{ project[0] }}">
+					<li>Participants</li>
+				</a>
+			</ul>
+		</div>
+		<img id="hero" src="{{ project[4] }}" alt="" draggable="false">
+		<input id="name" type="text" name="project-name" value="{{ project[1] }}" placeholder="Project Name" required>
+		<address>
+			<p><b>Date:</b> <input id="date" type="date" min="{{ current_date }}" name="project-date" value="{{ project[6] }}" placeholder="Date" required></p>
+			<p><b>Location:</b> <input id="location" type="text" name="project-location" value="{{ project[5] }}" placeholder="Project Location" required></p>
+			<p><b>Project Manager:</b> {{ project[2] }}</p>
+			<p><b>Contact Info:</b> <input id="email" type="email" name="project-email" value="{{ project[3] }}" placeholder="Email" multiple required></p>
+		</address>
+		<br>
+		<textarea id="description" rows="30" name="project-description" placeholder="Write a description about your project and how it can help the environment...">{{ project[7] }}</textarea>
+		<input id="submit" type="submit" value="Update">
+		<div class="clearfloat"></div>
+	</form>
+
+	<script> 
+		const profilePicture = "{{ session['picture'] }}"
+	</script>
+</body>
+</html>

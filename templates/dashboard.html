@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="/static/style.css" />
+	<script src="/static/script.js" defer></script>
+	<script src="/static/navbar.js" defer></script>
+</head>
+<body>
+	<div id="navbar"></div>
+	
+	<h1>Your Projects</h1>
+
+	<a class="anchor-btn" id="new-project-btn" href="/projects/create">New Project</a>
+
+	<div id="dashboard-projects">
+		{% for project in projects %}
+			<div>
+				<p class="title">{{ project[1] }}</p>
+				<p class="date">Event Date: <span class="convert-date">{{ project[2] }}</span></p>
+				<div class="options">
+					<a href="/project/{{ project[0] }}">View</a>
+					<a href="/edit/{{ project[0] }}">Edit</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<script> 
+		const profilePicture = "{{ session['picture'] }}"
+	</script>
+</body>
+</html>

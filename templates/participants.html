@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ project[1] }} | Participants</title>
+	<link rel="stylesheet" href="/static/style.css" />
+	<script src="/static/script.js" defer></script>
+	<script src="/static/navbar.js" defer></script>
+</head>
+<body>
+	<div id="navbar"></div>
+
+	<div id="project-display">
+		<div id="sub-navbar">
+			<ul>
+				<a href="/edit/{{ project[0] }}">
+					<li>Editor</li>
+				</a>
+				<a href="/participants/{{ project[0] }}">
+					<li selected>Participants</li>
+				</a>
+			</ul>
+		</div>
+
+		<!-- <table id="participants" border="1">
+			<tr>
+				<th>User</th>
+				<th>Email</th>
+			</tr>
+			{% for participant in participants %}
+				<tr>
+					<td>{{ participant }}</td>
+					<td>{{ emails[loop.index0] }}</td>
+				</tr>
+			{% endfor %}
+		</table> -->
+
+		<div id="participant-list">
+		{% for participant in participants %}
+			<div class="participant">
+				<p class="title">{{ participant }}</p>
+				<p class="date">Email: {{ emails[loop.index0] }}</p>
+				<div class="options">
+					<button participant="{{participant}}">Remove</button>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+
+	<script> 
+		const profilePicture = "{{ session['picture'] }}"
+	</script>
+</body>
+</html>
