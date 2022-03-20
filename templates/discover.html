@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Active Projects</title>
+	<link rel="stylesheet" href="/static/style.css" />
+	<script src="/static/script.js" defer></script>
+	<script src="/static/navbar.js" defer></script>
+</head>
+<body>
+	<div id="navbar"></div>
+	
+	<h1>Active Projects</h1>
+
+	<div id="projects">
+		{% for project in projects %}
+			<a href="/project/{{ project[0] }}">
+				<div>
+					<img src="{{ project[4] }}" alt="">
+					<p class="title">{{ project[1] }}<br><span>Location: {{ project[5] }}</span></p>
+					<p class="description">{{ project[7] }}</p>
+					<div class="text-fade"></div>
+				</div>
+			</a>
+		{% endfor %}
+	</div>
+
+	<script> 
+		const profilePicture = "{{ session['picture'] }}"
+	</script>
+</body>
+</html>
